@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+ 	<h:head>
+
+	<link rel="stylesheet" type="text/css" href="estilos.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" /> 
+
+	<style type="text/css">
+		body {
+			font-family:Monaco,Georgia,Times,serif;
+			font-size: 120%;
+			font-weight: normal;
+			background-color: rgb(225, 229, 243);
+
+			
+		}
+		.titulo { color: rgb(1, 42, 223); font:oblique bold 270% sans-serif;  }
+		.texto { color: orange; font:oblique bold 110% monospace; }
+		.sub { color: black; font:bold 80% cursive; }
+		.tabla {color:white; background:rgb(49, 24, 4);}
+
+			
+
+	</style>
+	<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.css"></link>
+	</h:head>
+ 	<h:body>
+		<br></br>
+		<br></br>
+		<center><div align="center" style="width:70%; height:600px; background: #c5c5c5; border-radius:100px;">
+			<h:form id="guess_form">
+				<br></br>
+				<br></br>
+				<img src="img/biblioteca.jpg"></img>
+				<br></br>
+				<br></br>
+				<p:commandLink class="btn btn-secondary" value="Iniciar Secion" update="guess_form" style="width:200px; height:40px;" />
+				<br></br>
+				<br></br>
+				<p:commandLink class="btn btn-secondary" value="Registrarse" update="guess_form" style="width:200px; height:40px;"  />
+				<h3></h3>
+			</h:form>
+		</div></center>
+		
+ 	</h:body>
+</html>
