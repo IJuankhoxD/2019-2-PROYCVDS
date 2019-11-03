@@ -1,0 +1,12 @@
+ .divform {
+     background: #c5c5c5;
+     width: 70%;
+     height: 600px;
+     border-radius: 100px;
+     align-content: center;
+ }
+
+ .boton {
+     width: 250px;
+     height: 40px;
+ }
