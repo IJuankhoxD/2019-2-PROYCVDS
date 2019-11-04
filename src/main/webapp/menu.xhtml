@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui">
+<h:head>
+ 
+	<link rel="stylesheet" type="text/css" href="estilos/estilos.css" /> 
+	<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.css">
+	</link>
+</h:head>
+<h:body>
+	<center>
+		<div class="divmenu">
+			<img src="img/eci.jpg"></img>
+		</div>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<div class="divbarra" style="background:#a80505; height: 40px;"></div>
+		<br></br>
+		<div class ="divform" style=" background: #c5c5c5; width: 70%; height: 500px; border-radius: 50px;">
+			<h:form id="guess_form">
+				<br></br>
+				<img src="img/mouse.JPG" width="670px" ></img>
+				<br></br>
+				<br></br>
+				<h5>Ingresaste como Administrador</h5>
+				<br></br>
+				<p:commandLink class="btn btn-secondary botondos" value="Consultar recurso" update="guess_form" 
+					style="width: 350px;"/>
+				<br></br>
+				<br></br>
+				<p:commandLink class="btn btn-secondary botondos" value="Registrar recurso" update="guess_form" 
+					style="width: 350px;"/>
+				<br></br>
+				<br></br>
+				<p:commandLink class="btn btn-secondary botondos" value="Modificar recurso" update="guess_form"
+					style="width: 350px;"/>
+				<h3></h3>
+			</h:form>
+		</div>
+	</center>
+
+</h:body>
+<script src="../Js/master.js"></script>
+</html>
