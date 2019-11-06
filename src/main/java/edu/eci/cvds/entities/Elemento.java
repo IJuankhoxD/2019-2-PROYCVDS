@@ -4,16 +4,24 @@ package edu.eci.cvds.entities;
 public class Elemento {
     
     private int id;
-    private int valor;
+    private boolean averiado;
+    private String ubicacion;
     private boolean disponible;
+    private String nombre;
+    private int capacidad;
+    private ElementoTipo tipo;
     
     
     
-    public Elemento(int id, int valor, boolean disponible) {
+    public Elemento(int id, boolean disponible,boolean averiado, String ubicacion, String nombre, int capacidad, ElementoTipo tipo) {
             super();
-            this.id = -1;
-            this.valor = valor;
+            this.id = id;
+            this.ubicacion = ubicacion;
             this.disponible = disponible;   
+            this.averiado = averiado;
+            this.nombre = nombre;
+            this.capacidad = capacidad;
+            this.tipo = tipo;
 	}
    
 	public int getId() {
@@ -26,13 +34,13 @@ public class Elemento {
 	}
 
 
-	public int getValor() {
-		return valor;
+	public String getNombre() {
+		return nombre;
 	}
 
 
-	public void setValor(int valor) {
-		this.valor = valor;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 
@@ -45,13 +53,35 @@ public class Elemento {
 		this.disponible = disponible;
 	}
 
-
-	
-
+        public String getUbicacion(){
+            return ubicacion;
+        }
+	public void setUbicacion(String ubicacion){
+            this.ubicacion = ubicacion;
+        }
+        
+        public boolean getAveriado(){
+            return averiado;
+        }
+        public void setAvereiado(boolean averiado){
+            this.averiado = averiado;
+        }
+        public int getCapacidad(){
+            return capacidad;
+        }
+        public void setCapacidad(int capacidad){
+            this.capacidad = capacidad;
+        }
+        public ElementoTipo getElementoTipo(){
+            return tipo;
+        }
+        public void setElementoTipo(ElementoTipo tipo){
+            this.tipo = tipo;
+        }
 
 	@Override
     public String toString() {
-        return "Elemento { id: "+id+", valor: "+valor+", disponible: "+disponible+" }";
+        return "Elemento { id: "+id+", ubicacion: "+ubicacion+", nombre: "+nombre+", disponible: "+disponible+" }";
     }
     
     

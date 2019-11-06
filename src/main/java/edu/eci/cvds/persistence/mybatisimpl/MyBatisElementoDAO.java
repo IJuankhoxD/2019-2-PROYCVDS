@@ -21,12 +21,21 @@ public class MyBatisElementoDAO implements ElementoDAO {
 
     @Override
     public List<Elemento> loadAll() throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{   
+            return elementoMapper.getElementos();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Problemas con la busqueda de los elementos",e);
+        }
     }
 
     @Override
     public void save(Elemento b) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            elementoMapper.insertElemento(b);
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Problemas con el elemento a insertar",e);
+        }
+        
     }
 
 	
