@@ -32,21 +32,20 @@ public class BasePageBean implements Serializable{
      
      private String correo;
      private String password;
-     private Boolean rememberMe;
-     
-     
-    public Subject getSubject() {
-        return SecurityUtils.getSubject();
-    }
+     private Boolean rememberMe;    
+   
     
     public void doLogin() {
-        Subject currentUser  = SecurityUtils.getSubject();
-
-        UsernamePasswordToken token = new UsernamePasswordToken(getCorreo(), new Sha256Hash(getPassword()).toHex(), getRememberMe());
+        
         try {
+            
+            System.out.println(correo+"    "+password);
+            Subject currentUser  = SecurityUtils.getSubject();                   
+            System.out.println(correo+"    "+password);
+            UsernamePasswordToken token = new UsernamePasswordToken(getCorreo(), getPassword(), getRememberMe());
             currentUser.login(token);
             currentUser.getSession().setAttribute("correo",correo);
-            FacesContext.getCurrentInstance().getExternalContext().redirect("menu.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/menu.xhtml");
         }
         catch (UnknownAccountException ex) {
             facesError("Unknown account");
@@ -60,15 +59,10 @@ public class BasePageBean implements Serializable{
             facesError("Locked account");
             log.error(ex.getMessage(), ex);
         }
-        catch (AuthenticationException ex) {
+        catch (AuthenticationException | IOException | UnavailableSecurityManagerException ex) {
             facesError("Unknown error: " + ex.getMessage());
             log.error(ex.getMessage(), ex);
-        }
-        catch (IOException ex){
-            facesError("Unknown error: " + ex.getMessage());
-            log.error(ex.getMessage(), ex);
-
-        }
+        }  
     }
 
     public String getPassword() {
@@ -97,16 +91,21 @@ public class BasePageBean implements Serializable{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void login(){
+    public void login() throws IOException{
         try{
             System.out.println(correo+"     "+password);
             Subject usuario = SecurityUtils.getSubject();
+            
+                System.out.println("ad");
             Session sesion = usuario.getSession();
             sesion.setAttribute("email",correo);
             if ( !usuario.isAuthenticated() ) {
                 UsernamePasswordToken token = new UsernamePasswordToken(correo, password);
                 token.setRememberMe(rememberMe);
-                usuario.login(token);                
+                usuario.login(token);  
+                System.out.println("ad");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/menu.xhtml");
+                
             }   
         }catch( IncorrectCredentialsException | UnavailableSecurityManagerException a){
         }         
