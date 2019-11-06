@@ -1,44 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3c.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    
 <h:head>
  
 	<link rel="stylesheet" type="text/css" href="estilos/estilos.css" /> 
-	<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.css">
-	</link>
+	<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.css"/>
+	
 </h:head>
+    
+<h:body>
+    <br></br>
+    <br></br>
+    <center>
+        <div class ="divform" style="border-radius: 50px">
+            <h:form method="POST" id="guess_form">
+                <br></br>
+                <br></br>
+                <img src="img/biblioteca.jpg"/>
+                <br></br>
+                <br></br>
+                <!-- Forma -->
 
-
-
-<h:body >
-	<br></br>
-	<br></br>
-	<center>
-		<div class ="divform" style="border-radius: 50px">
-			<h:form id="guess_form">
-				<br></br>
-				<br></br>
-				<img src="img/biblioteca.jpg"></img>
-				<br></br>
-				<br></br>
-				<!-- Forma -->
-			
-						<div class="form-group boton">
-						  <!-- <label for="exampleInputEmail1">Email address</label> -->
-						  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar email"/>
-						  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-						</div>
-						<div class="form-group boton">
-						  <!-- <label for="exampleInputPassword1">Password</label> -->
-						  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña"/>
-						</div>
-				<p:commandLink class="btn btn-secondary boton" value="Iniciar Sesión" update="guess_form"/>
-				<br></br>
-				<br></br>
-				<p:commandLink class="btn btn-secondary boton" value="Registrarse" update="guess_form"/>
-				<h3></h3>
-			</h:form>
-		</div>
-	</center>
+                <div class="form-group boton">
+                  <!-- <label for="exampleInputEmail1">Email address</label> -->
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar email" required="true" autofocus="true" binding="#{correo}"/>
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group boton">
+                  <!-- <label for="exampleInputPassword1">Password</label> -->
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" required="true" autofocus="true" binding="#{contraseña}" />
+                </div>
+                <p:commandLink type="submit" class="btn btn-secondary boton" value="Iniciar Sesión" update="guess_form" actionListener="#{inicioBean.login()}" />
+                <br></br>
+                <br></br>
+                <p:commandLink class="btn btn-secondary boton" value="Registrarse" update="guess_form"/>
+                <h3></h3>
+            </h:form>
+        </div>
+    </center>
 
 </h:body>
 <script src="../Js/master.js"></script>
