@@ -25,7 +25,7 @@ import edu.eci.cvds.entities.Elemento;
 public interface ElementoMapper {
 
     public List<Elemento> getElementos();
-    public void insertElemento(Elemento elemento);
+    public void insertElemento(@Param("elemento") Elemento elemento);
     
 
 }

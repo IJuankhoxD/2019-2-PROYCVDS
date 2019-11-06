@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS USUARIO (
+  id INT  NOT NULL,
+  name VARCHAR(50)  NOT NULL,
+  correo VARCHAR(30)  NOT NULL,
+  password VARCHAR(15)  NOT NULL,
+  roll VARCHAR(15)  NOT NULL,
+  PRIMARY KEY (id)) ;
+  
+  
+CREATE TABLE IF NOT EXISTS RECURSO (
+  id int NOT NULL,
+  disponible BOOLEAN  NOT NULL,
+  averiado BOOLEAN(30)  NOT NULL,
+  ubicacion VARCHAR(30)  NOT NULL,
+  descripcion VARCHAR(30)  NOT NULL, 
+  capacidad int NOT NULL,
+  PRIMARY KEY (id));

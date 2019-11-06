@@ -7,22 +7,15 @@ package edu.eci.cvds.services.impl;
 
 import com.google.inject.Inject;
 import edu.eci.cvds.entities.Elemento;
-
-
 import edu.eci.cvds.persistence.ElementoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
-
 import edu.eci.cvds.services.BibliotecaServices;
 import edu.eci.cvds.services.ServicesException;
+import java.util.ArrayList;
+import java.util.List;
 
 
-/**
- *
- * @author fchaves
- * @author salzate
- */
 public class BibliotecaServicesImpl implements BibliotecaServices {
-
 	
 
 	@Inject
@@ -40,5 +33,15 @@ public class BibliotecaServicesImpl implements BibliotecaServices {
         }
         
    
+    }
+
+    @Override
+    public List<Elemento> buscarElementos() throws ServicesException {
+        try{ 
+            return elementoDAO.loadAll();
+        }catch(PersistenceException ex){
+            throw new ServicesException("Serch error:"+ex.getLocalizedMessage(), ex);
+        }
+        
     }
 }

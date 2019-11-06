@@ -20,17 +20,53 @@
   </properties>
 
    <dependencies>
-        <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>3.8.1</version>
-          <scope>test</scope>
-        </dependency>
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-guice</artifactId>
+        <version>3.10</version>
+	</dependency>
+	
+	<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+    </dependency>
+	
+	<dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
+    </dependency>
+	
+	<dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.191</version>
+    </dependency>
+		
+	<dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.0.0</version>
+	</dependency>
+		
+	<dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.5</version>
+    </dependency>
+		
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
 	
 	<dependency>
 		<groupId>javax</groupId>
 		<artifactId>javaee-web-api</artifactId>
-		<version>7.0</version>
+		<version>8.0</version>
 		<scope>provided</scope>
 	</dependency>
 	
@@ -38,7 +74,7 @@
 	<dependency>
 		<groupId>com.sun.faces</groupId>
 		<artifactId>jsf-api</artifactId>
-		<version>2.2.10</version>
+		<version>2.2.20</version>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
@@ -55,55 +91,51 @@
 		<version>1.2</version>
 	</dependency>
 	
+	<dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+    </dependency>
+	
 	<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
 	<dependency>
 		<groupId>org.primefaces</groupId>
 		<artifactId>primefaces</artifactId>
-		<version>6.0</version>
+		<version>7.0</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
-        <!-- My Batis dependencies -->
-        <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-guice</artifactId>
-                <version>3.10</version>
+	
+	<dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+    </dependency>
+	
+    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.26</version>
+            <scope>test</scope>
+    </dependency>
+	
+    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.26</version>
+            <scope>test</scope>
+    </dependency>
+	
+    <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.4.0</version>
+    </dependency>
+	
+	<dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
         </dependency>
-        <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>3.4.6</version>
-        </dependency>
-<!-- 		TODO Required? -->
-        <dependency>
-                <groupId>commons-dbcp</groupId>
-                <artifactId>commons-dbcp</artifactId>
-                <version>1.4</version>
-        </dependency>
-
-        <!-- Guice Dependencies -->
-        <dependency>
-                <groupId>com.google.inject</groupId>
-                <artifactId>guice</artifactId>
-                <version>4.2.0</version>
-        </dependency>
-
-        <!-- Database connection dependencies -->
-        <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.44</version>
-        </dependency>
-        <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>1.4.191</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>4.3.1</version>
-        </dependency>
-
   </dependencies>
 
   <build>
@@ -126,30 +158,6 @@
                <failOnMissingWebXml>false</failOnMissingWebXml>
            </configuration>
        </plugin>
-       <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-dependency-plugin</artifactId>
-           <version>2.6</version>
-           <executions>
-               <execution>
-                   <phase>validate</phase>
-                   <goals>
-                       <goal>copy</goal>
-                   </goals>
-                   <configuration>
-                       <silent>true</silent>
-                       <artifactItems>
-                           <artifactItem>
-                               <groupId>javax</groupId>
-                               <artifactId>javaee-endorsed-api</artifactId>
-                               <version>7.0</version>
-                               <type>jar</type>
-                           </artifactItem>
-                       </artifactItems>
-                   </configuration>
-               </execution>
-           </executions>
-       </plugin>
 
        <!-- Tomcat embedded plugin. -->
        <plugin>
@@ -161,7 +169,9 @@
                <path>/</path>
            </configuration>
        </plugin>
-	    <plugin>
+	   
+	   <!-- Plugin configuration for Heroku compatibility. -->
+        <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
             <version>2.1</version>
@@ -186,6 +196,56 @@
 
             </executions>
         </plugin>
-   </plugins>
-  </build>
+		<!-- clean project (also local H2 database)-->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.6.1</version>
+                <executions>
+                    <execution>
+                        <id>auto-clean</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- create local H2 database -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.184</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <driver>org.h2.Driver</driver>
+                    <url>jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL</url>
+                    <username>sa</username>
+                    <password></password>
+                    <autocommit>false</autocommit>
+                    <!--skip>${maven.test.skip}</skip!-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-db</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <srcFiles>
+                                <srcFile>tables.sql</srcFile>
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
