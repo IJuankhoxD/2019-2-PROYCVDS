@@ -18,10 +18,14 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import org.apache.shiro.UnavailableSecurityManagerException;
+import org.apache.shiro.session.Session;
 
 
 @ManagedBean(name = "inicioBean")
-@ViewScoped
+@SuppressWarnings("deprecation")
+@SessionScoped 
 
 public class BasePageBean implements Serializable{
      private static final Logger log = LoggerFactory.getLogger(BasePageBean.class);
@@ -91,5 +95,26 @@ public class BasePageBean implements Serializable{
     
     private void facesError(String unknown_account) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void login(){
+        try{
+            System.out.println(correo+"     "+password);
+            Subject usuario = SecurityUtils.getSubject();
+            Session sesion = usuario.getSession();
+            sesion.setAttribute("email",correo);
+            if ( !usuario.isAuthenticated() ) {
+                UsernamePasswordToken token = new UsernamePasswordToken(correo, password);
+                token.setRememberMe(rememberMe);
+                usuario.login(token);                
+            }   
+        }catch( IncorrectCredentialsException | UnavailableSecurityManagerException a){
+        }         
+    }
+    
+    
+    public void logout(){
+        Subject usuario = SecurityUtils.getSubject();
+        usuario.logout();
     }
 }
