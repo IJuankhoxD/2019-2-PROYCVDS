@@ -20,18 +20,18 @@
   </properties>
 
    <dependencies>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.12</version>
+          <scope>test</scope>
+        </dependency>
     <dependency>
         <groupId>org.mybatis</groupId>
         <artifactId>mybatis-guice</artifactId>
         <version>3.10</version>
 	</dependency>
-	
-	<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-    </dependency>
-	
+  
 	<dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
@@ -56,13 +56,6 @@
             <version>3.4.5</version>
     </dependency>
 		
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-	
 	<dependency>
 		<groupId>javax</groupId>
 		<artifactId>javaee-web-api</artifactId>
@@ -124,18 +117,18 @@
             <version>1.7.26</version>
             <scope>test</scope>
     </dependency>
-	
-    <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <version>1.4.0</version>
-    </dependency>
-	
 	<dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        
+
   </dependencies>
 
   <build>
@@ -158,25 +151,31 @@
                <failOnMissingWebXml>false</failOnMissingWebXml>
            </configuration>
        </plugin>
-
-       <!-- Tomcat embedded plugin. -->
        <plugin>
-           <groupId>org.apache.tomcat.maven</groupId>
-           <artifactId>tomcat7-maven-plugin</artifactId>
-           <version>2.2</version>
-           <configuration>
-               <port>8080</port>
-               <path>/</path>
-           </configuration>
-       </plugin>
-	   
-	   <!-- Plugin configuration for Heroku compatibility. -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <version>2.1</version>
-            <executions>
-                <execution>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+           <version>2.6</version>
+           <executions>
+               <execution>                   
+                   <id>Javax</id>
+                   <phase>validate</phase>
+                   <goals>
+                       <goal>copy</goal>
+                   </goals>
+                   <configuration>
+                       <silent>true</silent>
+                       <artifactItems>
+                           <artifactItem>
+                               <groupId>javax</groupId>
+                               <artifactId>javaee-endorsed-api</artifactId>
+                               <version>7.0</version>
+                               <type>jar</type>
+                           </artifactItem>
+                       </artifactItems>
+                   </configuration>
+               </execution>
+               <execution>
+                   <id>JSimone</id>
                     <phase>package</phase>
                     <goals>
                         <goal>copy</goal>
@@ -193,8 +192,43 @@
 
                     </configuration>
                 </execution>
+           </executions>
+       </plugin>
 
+       <!-- Tomcat embedded plugin. -->
+       <plugin>
+           <groupId>org.apache.tomcat.maven</groupId>
+           <artifactId>tomcat7-maven-plugin</artifactId>
+           <version>2.2</version>
+           <configuration>
+               <port>8080</port>
+               <path>/</path>
+           </configuration>
+       </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.1</version>
+	   
+	   <!-- Plugin configuration for Heroku compatibility. -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.1</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                </execution>
             </executions>
+            <configuration>
+                <classpathScope>test</classpathScope>
+                <mainClass>edu.eci.cvds.servlet.Inicio</mainClass>
+            </configuration>
+        </plugin>   
+   </plugins>
+  </build>
         </plugin>
 		<!-- clean project (also local H2 database)-->
             <plugin>
