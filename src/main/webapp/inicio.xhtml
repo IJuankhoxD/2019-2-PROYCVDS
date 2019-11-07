@@ -18,13 +18,18 @@
     <br></br>
     <center>
         <div class ="divform" style="border-radius: 50px">
+<<<<<<< HEAD
             <h:form  id="guess_form">
+=======
+            <h:form method="POST" id="guess_form">
+>>>>>>> 2f74fa89224ef2c3722c3e6d9615830d918757c9
                 <br></br>
                 <br></br>
                 <img src="img/biblioteca.jpg"/>
                 <br></br>
                 <br></br>
                 <!-- Forma -->
+<<<<<<< HEAD
 
                 <div class="form-group boton">
                   <!-- <label for="example Input Email1">Email address</label> -->
@@ -39,11 +44,29 @@
                 <br></br>
                 <br></br>
                 <p:commandButton class="btn btn-secondary boton" value="Registrarse" update="guess_form"/>
+=======
+                <div class="form-group boton">
+                  <!-- <label for="exampleInputEmail1">Email address</label> -->
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar email" required="true" autofocus="true" binding="#{correo}"/>
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group boton">
+                  <!-- <label for="exampleInputPassword1">Password</label> -->
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" required="true" autofocus="true" binding="#{contraseña}" />
+                </div>
+                <p:commandLink type="submit" class="btn btn-secondary boton" value="Iniciar Sesión" update="guess_form" actionListener="#{inicioBean.login()}" />
+                <br></br>
+                <br></br>
+                <p:commandLink class="btn btn-secondary boton" value="Registrarse" update="guess_form"/>
+>>>>>>> 2f74fa89224ef2c3722c3e6d9615830d918757c9
                 <h3></h3>
             </h:form>
         </div>
     </center>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f74fa89224ef2c3722c3e6d9615830d918757c9
 </h:body>
 <script src="../Js/master.js"></script>
 </html>
