@@ -9,9 +9,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -21,7 +18,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.session.Session;
-
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.Factory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ManagedBean(name = "inicioBean")
 @SuppressWarnings("deprecation")
@@ -38,7 +43,9 @@ public class BasePageBean implements Serializable{
     public void doLogin() {
         
         try {
-            
+            Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+	    SecurityManager securityManager = factory.getInstance();
+	    SecurityUtils.setSecurityManager(securityManager);
             System.out.println(correo+"    "+password);
             Subject currentUser  = SecurityUtils.getSubject();                   
             System.out.println(correo+"    "+password);
