@@ -4,6 +4,6 @@ machine:
 
 deployment:
   staging:
-    branch: master
+    branch: mergeS_M
     heroku: 
       appname: cvdsproyecto2019-2
