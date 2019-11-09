@@ -41,35 +41,37 @@ public class BasePageBean implements Serializable{
    
     
     public void doLogin() {
-        
-        try {
+       
             Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
 	    SecurityManager securityManager = factory.getInstance();
 	    SecurityUtils.setSecurityManager(securityManager);
-            System.out.println(correo+"    "+password);
             Subject currentUser  = SecurityUtils.getSubject();                   
-            System.out.println(correo+"    "+password);
-            UsernamePasswordToken token = new UsernamePasswordToken(getCorreo(), getPassword(), getRememberMe());
-            currentUser.login(token);
-            currentUser.getSession().setAttribute("correo",correo);
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/menu.xhtml");
-        }
-        catch (UnknownAccountException ex) {
-            facesError("Unknown account");
-            log.error(ex.getMessage(), ex);
-        }
-        catch (IncorrectCredentialsException ex) {
-            facesError("Wrong password");
-            log.error(ex.getMessage(), ex);
-        }
-        catch (LockedAccountException ex) {
-            facesError("Locked account");
-            log.error(ex.getMessage(), ex);
-        }
-        catch (AuthenticationException | IOException | UnavailableSecurityManagerException ex) {
-            facesError("Unknown error: " + ex.getMessage());
-            log.error(ex.getMessage(), ex);
-        }  
+            if ( !currentUser.isAuthenticated() ){
+                
+                try{
+                    UsernamePasswordToken token = new UsernamePasswordToken(getCorreo(), getPassword());
+                    currentUser.login(token);
+                    currentUser.getSession().setAttribute("correo",correo);
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/menu.xhtml");
+                }
+               catch (UnknownAccountException ex) {
+                   facesError("Unknown account");
+                   log.error(ex.getMessage(), ex);
+               }
+               catch (IncorrectCredentialsException ex) {
+                   facesError("Wrong password");
+                   log.error(ex.getMessage(), ex);
+               }
+               catch (LockedAccountException ex) {
+                   facesError("Locked account");
+                   log.error(ex.getMessage(), ex);
+               }
+               catch (AuthenticationException | IOException | UnavailableSecurityManagerException ex) {
+                   facesError("Unknown error: " + ex.getMessage());
+                   log.error(ex.getMessage(), ex);
+               } 
+            }
+            
     }
 
     public String getPassword() {
@@ -97,27 +99,6 @@ public class BasePageBean implements Serializable{
     private void facesError(String unknown_account) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public void login() throws IOException{
-        try{
-            System.out.println(correo+"     "+password);
-            Subject usuario = SecurityUtils.getSubject();
-            
-                System.out.println("ad");
-            Session sesion = usuario.getSession();
-            sesion.setAttribute("email",correo);
-            if ( !usuario.isAuthenticated() ) {
-                UsernamePasswordToken token = new UsernamePasswordToken(correo, password);
-                token.setRememberMe(rememberMe);
-                usuario.login(token);  
-                System.out.println("ad");
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/menu.xhtml");
-                
-            }   
-        }catch( IncorrectCredentialsException | UnavailableSecurityManagerException a){
-        }         
-    }
-    
     
     public void logout(){
         Subject usuario = SecurityUtils.getSubject();

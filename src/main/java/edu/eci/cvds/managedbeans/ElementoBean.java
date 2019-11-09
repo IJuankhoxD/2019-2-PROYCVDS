@@ -36,7 +36,6 @@ public class ElementoBean implements Serializable{
     private ElementoTipo tipo;
     private String ubicacion;
     private int id;
-    private int capacidad;
     private boolean disponible;
     private boolean averiado;
 
@@ -68,16 +67,14 @@ public class ElementoBean implements Serializable{
     public void setId(int identificador){
         this.id = identificador;
     }
-    public int getCapacidad(){
-        return capacidad;
-    }
-    public void setCapacidad(int capacidad){
-        this.capacidad = capacidad;
+    
+    public ElementoTipo[] recursoTipos(){
+        return ElementoTipo.values();
     }
     
     public void registrarElemento(){
         try{
-            Elemento elemento = new Elemento(id, disponible, averiado, ubicacion, nombre, capacidad,tipo);
+            Elemento elemento = new Elemento(id, disponible, ubicacion, nombre,tipo);
             bibliotecaServices.insertarElemento(elemento);
         }catch(ServicesException e){
             facesError(e.getMessage());

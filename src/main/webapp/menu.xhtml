@@ -9,7 +9,7 @@
 <h:body>
 	<center>
 		<div class="divmenu">
-			<img src="img/eci.jpg"></img>
+                    <img src="img/eci.jpg" style="height: auto; width: 600px"></img>
 		</div>
 		<br></br>
 		<br></br>
@@ -26,15 +26,15 @@
 				<br></br>
 				<h5>Ingresaste como Administrador</h5>
 				<br></br>
-				<p:commandLink class="btn btn-secondary botondos" value="Consultar recurso" update="guess_form" 
+				<p:commandButton class="btn btn-secondary botondos" value="Consultar recurso" action = "inicio?faces-redirect = true"  
 					style="width: 350px;"/>
 				<br></br>
 				<br></br>
-				<p:commandLink class="btn btn-secondary botondos" value="Registrar recurso" update="guess_form" 
+				<p:commandButton class="btn btn-secondary botondos" value="Registrar recurso"  action = "registrar?faces-redirect = true" 
 					style="width: 350px;"/>
 				<br></br>
 				<br></br>
-				<p:commandLink class="btn btn-secondary botondos" value="Modificar recurso" update="guess_form"
+				<p:commandButton class="btn btn-secondary botondos" value="Modificar recurso" action = "inicio?faces-redirect = true"
 					style="width: 350px;"/>
 				<h3></h3>
 			</h:form>

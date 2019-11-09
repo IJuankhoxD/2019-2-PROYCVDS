@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<link rel="stylesheet" type="text/css" href="estilos/estilos.css" /> 
 	<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.css">
@@ -8,7 +8,7 @@
 <h:body>
 	<center>
 		<div class="divmenu">
-			<img src="img/eci.jpg"></img>
+                    <img src="img/eci.jpg" style="height: 80px"></img>
 		</div>
 		<br></br>
 		<br></br>
@@ -22,27 +22,33 @@
 				<br></br>
 				<!-- <img src="img/mouse.JPG" width="670px" ></img> -->
 				<br></br>
-				<h4>Registro de Recursos</h4>
+				<h2>Registro de Recursos</h2>
                 <br></br>
                 <form>
                         <div class="form-group">
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Nombre" 
-                                    style="width: 600px;"/>
+                                <p:inputText type="text" class="form-control" id="inputAddress" placeholder="Nombre" 
+                                    style="width: 600px"/>
                             </div>
+                    
+                        <br></br>    
                         <div class="form-group">
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Identificador"
+                                <p:inputText type="text" class="form-control" id="inputAddress2" placeholder="Identificador"
                                     style="width: 600px;"/>
                             </div>
-
+                        <br></br>
                         <div class="form-group">
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Ubicación" 
+                                <p:inputText type="text" class="form-control" id="inputAddress" placeholder="Ubicación" 
                                     style="width: 600px;"/>
                             </div>
+                        <br></br>
                         <div class="form-group">
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Disponibilidad"
+                                <p:inputText type="text" class="form-control" id="inputAddress2" placeholder="Disponibilidad"
                                     style="width: 600px;"/>
                             </div>
-
+                        <br></br>
+                        <p:selectOneMenu value="#{ElementoBean.tipo}" style="width:196px">
+	                        <f:selectItems value="#{ElementoBean.recursoTipos()}"/>
+	                    </p:selectOneMenu>
                         <div class="form-group">
                             <select class="custom-select" style="width: 600px;">
                                 <option selected="" >Tipo de recurso</option>
@@ -66,8 +72,8 @@
                             </label>
                             </div>
                         </div>                        
-                        <button type="button" class="btn btn-primary btn">Registrar</button>
-                        <button type="button" class="btn btn-secondary btn">Cancelar</button>    
+                        <p:commandButton type="button" class="btn btn-primary btn" value="Registrar" actionListener = "#{ElementoBean.registrarElemento()}" update="@form"/>
+                        <p:commandButton type="button" class="btn btn-secondary btn" value="Cancelar" action = "menu?faces-redirect = true"/>    
                     </form>
         
 			</h:form>

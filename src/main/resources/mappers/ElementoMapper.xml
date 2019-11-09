@@ -27,7 +27,7 @@ and open the template in the editor.
     </select>
     
      <insert id="insertElemento" parameterType="edu.eci.cvds.entities.Elemento">
-        insert into recurso(id,disponible,averiado,ubicacion,nombre,capacidad) values (#{elemento.id},#{elemento.disponible},#{elemento.averiado},#{elemento.ubicacion},#{elemento.nombre},#{elemento.capacidad})
+        insert into recurso(id,disponible,averiado,ubicacion,nombre) values (#{elemento.id},#{elemento.disponible},#{elemento.ubicacion},#{elemento.nombre})
     </insert>
     
     

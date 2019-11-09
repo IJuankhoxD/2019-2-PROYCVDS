@@ -13,14 +13,13 @@ public class Elemento {
     
     
     
-    public Elemento(int id, boolean disponible,boolean averiado, String ubicacion, String nombre, int capacidad, ElementoTipo tipo) {
+    public Elemento(int id, boolean disponible,String ubicacion, String nombre, ElementoTipo tipo) {
             super();
             this.id = id;
             this.ubicacion = ubicacion;
             this.disponible = disponible;   
-            this.averiado = averiado;
+            this.averiado = false;
             this.nombre = nombre;
-            this.capacidad = capacidad;
             this.tipo = tipo;
 	}
    
@@ -65,12 +64,6 @@ public class Elemento {
         }
         public void setAvereiado(boolean averiado){
             this.averiado = averiado;
-        }
-        public int getCapacidad(){
-            return capacidad;
-        }
-        public void setCapacidad(int capacidad){
-            this.capacidad = capacidad;
         }
         public ElementoTipo getElementoTipo(){
             return tipo;
