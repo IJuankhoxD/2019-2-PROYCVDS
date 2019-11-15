@@ -52,22 +52,22 @@ public class BasePageBean implements Serializable{
                     UsernamePasswordToken token = new UsernamePasswordToken(getCorreo(), getPassword());
                     currentUser.login(token);
                     currentUser.getSession().setAttribute("correo",correo);
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/menu.xhtml");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/nuevo/menu.html");
                 }
                catch (UnknownAccountException ex) {
-                   facesError("Unknown account");
+                   facesError("Unknown account", ex);
                    log.error(ex.getMessage(), ex);
                }
                catch (IncorrectCredentialsException ex) {
-                   facesError("Wrong password");
+                   facesError("Wrong password", ex);
                    log.error(ex.getMessage(), ex);
                }
                catch (LockedAccountException ex) {
-                   facesError("Locked account");
+                   facesError("Locked account",ex);
                    log.error(ex.getMessage(), ex);
                }
                catch (AuthenticationException | IOException | UnavailableSecurityManagerException ex) {
-                   facesError("Unknown error: " + ex.getMessage());
+                   facesError("Unknown error: " + ex.getMessage(), ex);
                    log.error(ex.getMessage(), ex);
                } 
             }
@@ -96,8 +96,8 @@ public class BasePageBean implements Serializable{
         this.rememberMe = rememberMe;
     }
     
-    private void facesError(String unknown_account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void facesError(String unknown_account, Exception ex) {
+        throw new UnsupportedOperationException("Not supported yet.", ex); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void logout(){

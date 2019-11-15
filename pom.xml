@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>edu.eci.cvds</groupId>
-  <artifactId>Juego</artifactId>
+  <artifactId>Proyecto</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Juego Maven Webapp</name>
+  <name>Proyecto CVDS 2019</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -135,7 +135,7 @@
   </dependencies>
 
   <build>
-    <finalName>Juego</finalName>
+    <finalName>Proyecto</finalName>
 	<plugins>
        <plugin>
            <groupId>org.apache.maven.plugins</groupId>
@@ -162,7 +162,7 @@
            <version>2.2</version>
            <configuration>
                <port>8080</port>
-               <path>/faces/inicio.xhtml</path>
+               <path>/</path>
            </configuration>
        </plugin>
 	   
@@ -273,7 +273,7 @@
             </executions>
             <configuration>
                 <classpathScope>test</classpathScope>
-                <mainClass>edu.eci.cvds.servlet.Inicio</mainClass>
+                <mainClass>edu.eci.cvds.servlet.index</mainClass>
             </configuration>
         </plugin>
         </plugins>

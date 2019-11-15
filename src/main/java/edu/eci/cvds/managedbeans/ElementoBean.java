@@ -81,7 +81,6 @@ public class ElementoBean implements Serializable{
         }
     }
     
-    
     private void facesError(String message) {
         FacesContext.getCurrentInstance().addMessage("Registrar elemento: ", new FacesMessage(FacesMessage.SEVERITY_ERROR, message, "se gnenero un error"));
     }
