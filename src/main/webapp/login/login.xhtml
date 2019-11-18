@@ -32,27 +32,25 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form">
+				<h:form class="login100-form validate-form">
 					<span class="login100-form-title p-b-33">
 						Iniciar Sesión en Biblioteca
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Correo Electrónico" required="true" value="#{inicioBean.correo}"/>
+						<p:inputText class="input100" type="text" placeholder="Correo Electrónico" required="true" value="#{inicioBean.correo}"/>
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Contraseña" required="true"  value="#{inicioBean.password}" />
+						<p:inputText class="input100" type="password" placeholder="Contraseña" required="true"  value="#{inicioBean.password}" />
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<commandButton class="login100-form-btn" actionListener="#{inicioBean.doLogin()}">
-							Iniciar Sesión
-						</commandButton>
+						<p:commandButton class="login100-form-btn" value="Ingresar" actionListener="#{inicioBean.doLogin}"/>
 					</div>
 
 					<div class="text-center p-t-45 p-b-4">
@@ -74,7 +72,7 @@
 							Registrarse
 						</a>
 					</div>
-				</form>
+				</h:form>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3c.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"/>
 
 <head>
   <meta charset="utf-8">
@@ -131,8 +136,12 @@
               <div class="service-desc">
                 <h5>Registrar</h5>
                 <p>Nuevos Recursos</p>
-                <button class="btn btn--radius btn--green" type="submit">Registrar</button>
-              </div>
+                
+                <form>
+                    <p>
+                        <input type="button" class = "btn btn--radius btn--green" value="registrar" onClick="location.href='/faces/registrar/registro.xhtml'">
+                    </p>
+                </form>
             </div>
           </div>
         </div>

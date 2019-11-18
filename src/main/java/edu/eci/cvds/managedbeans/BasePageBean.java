@@ -52,7 +52,7 @@ public class BasePageBean implements Serializable{
                     UsernamePasswordToken token = new UsernamePasswordToken(getCorreo(), getPassword());
                     currentUser.login(token);
                     currentUser.getSession().setAttribute("correo",correo);
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/nuevo/menu.html");
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/menu.html");
                 }
                catch (UnknownAccountException ex) {
                    facesError("Unknown account", ex);

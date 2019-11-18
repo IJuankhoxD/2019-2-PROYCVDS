@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.RecursoMapper">
+
+
+    <select id="getRoles" resultMap="RollResult">
+        SELECT
+            *
+        FROM
+            roll
+    </select>
+    
+     <insert id="insertRoll" parameterType="edu.eci.cvds.entities.Roll">
+        insert into roll(nombre) values (#{rol.nombre})
+    </insert>
+    
+        <resultMap type='Roll' id='RollResult'>
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+    </resultMap>
+
+    
+    
+</mapper>

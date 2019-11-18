@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper">
+
+
+    <select id="getUsuarios" resultMap="UsuarioResult">
+        SELECT
+            *
+        FROM
+            usuario
+    </select>
+    
+     <insert id="insertUsuario" parameterType="edu.eci.cvds.entities.Usuario">
+        insert into usuario(nombre,correo,password,rol) values (#{usuario.nombre},#{usuario.correo},#{usuario.password},#{usuario.rol})
+    </insert>
+    
+        <resultMap type='Usuario' id='UsuarioResult'>
+        <id property='id' column='id'/>
+        <result property='correo' column='correo'/>
+        <result property='nombre' column='nombre'/>
+        <result property='password' column='password'/>
+        <association  property='rol' javaTipe = 'Roll' resultMap = 'edu.eci.cvds.persistence.mybatisimpl.mappers.RecursoMapper.RollResult' columnPrefix = 'rol_' column='rol'></association>
+        
+    </resultMap>
+
+    
+    
+</mapper>

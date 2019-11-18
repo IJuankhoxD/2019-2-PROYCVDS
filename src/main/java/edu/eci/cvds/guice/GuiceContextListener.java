@@ -15,10 +15,13 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import edu.eci.cvds.persistence.ElementoDAO;
+
+import edu.eci.cvds.persistence.RecursoDAO;
+import edu.eci.cvds.persistence.RollDAO;
 
 
-import edu.eci.cvds.persistence.mybatisimpl.MyBatisElementoDAO;
+import edu.eci.cvds.persistence.mybatisimpl.MyBatisRecursoDAO;
+import edu.eci.cvds.persistence.mybatisimpl.MyBatisRollDAO;
 import edu.eci.cvds.services.BibliotecaServices;
 import edu.eci.cvds.services.impl.BibliotecaServicesImpl;
 
@@ -44,7 +47,8 @@ public class GuiceContextListener implements ServletContextListener {
                 setEnvironmentId("development");
                 setClassPathResource("mybatis-config.xml");
                 bind(BibliotecaServices.class).to(BibliotecaServicesImpl.class);
-                bind(ElementoDAO.class).to(MyBatisElementoDAO.class);
+                bind(RecursoDAO.class).to(MyBatisRecursoDAO.class);
+                bind(RollDAO.class).to(MyBatisRollDAO.class);
             }
         });
         servletContextEvent.getServletContext().setAttribute(Injector.class.getName(), injector);

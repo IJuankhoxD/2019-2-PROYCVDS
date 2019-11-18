@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.RecursoMapper">
+
+
+    <select id="getRecursos" resultMap="RecursoResult">
+        SELECT
+            *
+        FROM
+            recurso
+    </select>
+    
+     <insert id="insertRecurso" parameterType="edu.eci.cvds.entities.Recurso">
+        insert into recurso(id,disponible,averiado,ubicacion,nombre,capacidad) values (#{recurso.id},#{recurso.disponible},#{recurso.averiado},#{recurso.ubicacion},#{recuso.nombre},#{recurso.capacidad})
+    </insert>
+    
+        <resultMap type='Recurso' id='RecursoResult'>
+        <id property='id' column='id'/>
+        <result property='disponible' column='disponible'/>
+        <result property='averidado' column='averiado'/>
+        <result property='ubicacion' column='ubicacion'/>
+        <result property='nombre' column='nombre'/>
+        <result property='capacidad' column='capacidad'/>
+        <result property='tipo_recurso' column='tipo_recurso'/>
+    </resultMap>
+
+    
+    
+</mapper>

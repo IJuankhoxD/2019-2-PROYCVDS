@@ -6,8 +6,8 @@
 package edu.eci.cvds.services.impl;
 
 import com.google.inject.Inject;
-import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.persistence.ElementoDAO;
+import edu.eci.cvds.entities.Recurso;
+import edu.eci.cvds.persistence.RecursoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.BibliotecaServices;
 import edu.eci.cvds.services.ServicesException;
@@ -19,15 +19,15 @@ public class BibliotecaServicesImpl implements BibliotecaServices {
 	
 
 	@Inject
-	private ElementoDAO elementoDAO;
+	private RecursoDAO recursoDAO;
 	
 	
 
 
     @Override
-    public void insertarElemento(Elemento elemento) throws ServicesException {
+    public void insertarRecurso(Recurso recurso) throws ServicesException {
         try{
-            elementoDAO.save(elemento);
+            recursoDAO.save(recurso);
         }catch(PersistenceException ex) {
             throw new ServicesException("Insert error:"+ex.getLocalizedMessage(), ex);
         }
@@ -36,9 +36,9 @@ public class BibliotecaServicesImpl implements BibliotecaServices {
     }
 
     @Override
-    public List<Elemento> buscarElementos() throws ServicesException {
+    public List<Recurso> buscarRecurso() throws ServicesException {
         try{ 
-            return elementoDAO.loadAll();
+            return recursoDAO.loadAll();
         }catch(PersistenceException ex){
             throw new ServicesException("Serch error:"+ex.getLocalizedMessage(), ex);
         }
