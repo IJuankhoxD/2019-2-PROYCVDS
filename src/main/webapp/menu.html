@@ -106,6 +106,7 @@
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-2 col-lg-offset-5">
@@ -120,9 +121,10 @@
                 <img src="img/icons/service-icon-1.png" alt="" />
               </div>
               <div class="service-desc">
-                  <h5>Consultar</h5>
-                  <p>Recursos Disponibles</p>
-                <button class="btn btn--radius btn--green" type="submit">Consultar</button>
+                <h5>Consultar</h5>
+                <p>
+                    <input type="button" class = "btn btn--radius btn--green" value="Consultar" onClick="location.href='/faces/registrar/consultar.xhtml'">
+                </p>
               </div>
             </div>
           </div>
@@ -135,13 +137,10 @@
               </div>
               <div class="service-desc">
                 <h5>Registrar</h5>
-                <p>Nuevos Recursos</p>
-                
-                <form>
-                    <p>
-                        <input type="button" class = "btn btn--radius btn--green" value="registrar" onClick="location.href='/faces/registrar/registro.xhtml'">
-                    </p>
-                </form>
+                <p>
+                    <input type="button" class = "btn btn--radius btn--green" value="registrar" onClick="location.href='/faces/registrar/registro.xhtml'">
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -153,8 +152,9 @@
               </div>
               <div class="service-desc">
                 <h5>Modificar</h5>
-                <p>Información de Nuestros Recursos</p>
-                <button class="btn btn--radius btn--green" type="submit">Modificar</button>
+                <p>
+                    <input type="button" class = "btn btn--radius btn--green" value="Modificar" onClick="location.href='/faces/registrar/modificar.xhtml'">
+                </p>
               </div>
             </div>
           </div>

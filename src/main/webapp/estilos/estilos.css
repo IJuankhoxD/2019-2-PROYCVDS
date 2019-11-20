@@ -1,0 +1,33 @@
+ .divform {
+     background: #c5c5c5;
+     width: 70%;
+     height: 600px;
+     border-radius: 100px;
+     align-content: center;
+     border-top-color: #a80505 ; 
+     border-left-color: #a80505 ; 
+     border-right-color: #a80505;
+     border-bottom-color: #a80505;
+     border-top-style: solid ;
+     border-left-style: solid;
+     border-right-style: solid;
+     border-bottom-style: solid;;
+ }
+ .divbarra{
+    background: #cc0404; 
+ }
+ .boton {
+     width: 250px;
+     height: 40px;
+ }
+
+ .divmenu{
+    position:absolute;
+    top:10px;
+    left:10px;
+ }
+
+ .botondos{
+    width: 350px;
+    height: 40px;
+ }

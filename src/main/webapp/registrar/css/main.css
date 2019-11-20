@@ -184,7 +184,7 @@ h6 {
 }
 
 .wrapper--w680 {
-  max-width: 680px;
+  max-width: 1250px;
 }
 
 /* ==========================================================================
@@ -436,6 +436,7 @@ input {
   border-radius: 3px;
   background: #fff;
   border-radius: 10px;
+
 }
 
 .card-1 {
@@ -446,7 +447,7 @@ input {
 
 .card-1 .card-heading {
   background: url("../images/biblioteca.jpg") center center/cover no-repeat;
-  padding-top: 210px;
+  padding-top: 270px;
 }
 
 .card-1 .card-body {
@@ -464,3 +465,22 @@ input {
   }
 }
 
+
+.login100-form-btn {
+    background-color: #A00707;
+    font-size: 14px;
+    color: #fff;
+    width: 30%;
+    height: 40px;
+}
+
+.card-2{
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  align-content: center; 
+}

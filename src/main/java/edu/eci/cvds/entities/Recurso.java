@@ -17,7 +17,7 @@ public class Recurso {
             super();
             this.id = id;
             this.ubicacion = ubicacion;
-            this.disponible = disponible;   
+            this.disponible = true;   
             this.averiado = averiado;
             this.nombre = nombre;
             this.capacidad = capacidad;

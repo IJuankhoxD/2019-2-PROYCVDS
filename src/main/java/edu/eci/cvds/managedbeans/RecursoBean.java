@@ -10,6 +10,7 @@ package edu.eci.cvds.managedbeans;
  * @author David Herrera
  */
 import edu.eci.cvds.entities.Recurso;
+import edu.eci.cvds.entities.RecursoTipo;
 import edu.eci.cvds.managedbeans.BasePageBean;
 import edu.eci.cvds.services.BibliotecaServices;
 import edu.eci.cvds.services.ServicesException;
@@ -22,9 +23,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import java.util.List;
 
 
-@ManagedBean(name = "ElementoBean")
+@ManagedBean(name = "recursoBean")
 @ViewScoped
 public class RecursoBean implements Serializable{
     
@@ -39,11 +41,22 @@ public class RecursoBean implements Serializable{
     private int capacidad;
     private boolean disponible;
     private boolean averiado;
+    private List<Recurso> recursosList;
 
     
     public RecursoBean(){
         bibliotecaServices = BibliotecaServicesFactory.getInstance().getBibliotecaServices();
     }
+    
+    public List<Recurso> getRecursosList() {
+        recursosList = consultarRecursos();
+        return recursosList;
+    }
+
+    public void setRecursoList(List<Recurso> recursosList) {
+        this.recursosList = recursosList;
+    }
+    
     public String getNombre(){
         return nombre;
     }
@@ -75,13 +88,31 @@ public class RecursoBean implements Serializable{
         this.capacidad = capacidad;
     }
     
+    public RecursoTipo[] recursoTipos(){
+       
+        return RecursoTipo.values();
+    }
+    
     public void registrarElemento(){
         try{
+            System.out.println(RecursoTipo.values());
             Recurso recurso = new Recurso(id, disponible, averiado, ubicacion, nombre, capacidad,tipo);
             bibliotecaServices.insertarRecurso(recurso);
         }catch(ServicesException e){
             facesError(e.getMessage());
         }
+    }
+    
+    public List<Recurso> consultarRecursos(){
+        List<Recurso> recs = null;
+        try {
+            recs = bibliotecaServices.buscarRecurso();
+
+            facesError("Consulta exitosa");
+        }catch (ServicesException e) {
+            facesError(e.getMessage());
+        }
+        return recs;
     }
     
     private void facesError(String message) {

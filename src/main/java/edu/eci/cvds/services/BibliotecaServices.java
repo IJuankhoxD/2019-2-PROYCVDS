@@ -11,8 +11,9 @@ import java.util.List;
 public interface BibliotecaServices {
 	
 
-    void insertarRecurso(Recurso elemento) throws ServicesException;
-    List<Recurso> buscarRecurso() throws ServicesException;
+    public void insertarRecurso(Recurso elemento) throws ServicesException;
+    
+    public List<Recurso> buscarRecurso() throws ServicesException;
 
  
 }

@@ -9,18 +9,18 @@ public class Elemento {
     private boolean disponible;
     private String nombre;
     private int capacidad;
-    private ElementoTipo tipo;
+    //private ElementoTipo tipo;
     
     
     
-    public Elemento(int id, boolean disponible,String ubicacion, String nombre, ElementoTipo tipo) {
+    public Elemento(int id, boolean disponible,String ubicacion, String nombre, RecursoTipo tipo) {
             super();
             this.id = id;
             this.ubicacion = ubicacion;
             this.disponible = disponible;   
             this.averiado = false;
             this.nombre = nombre;
-            this.tipo = tipo;
+            //this.tipo = tipo;
 	}
    
 	public int getId() {
@@ -65,12 +65,14 @@ public class Elemento {
         public void setAvereiado(boolean averiado){
             this.averiado = averiado;
         }
+        /*
         public ElementoTipo getElementoTipo(){
             return tipo;
         }
         public void setElementoTipo(ElementoTipo tipo){
             this.tipo = tipo;
         }
+*/
 
 	@Override
     public String toString() {

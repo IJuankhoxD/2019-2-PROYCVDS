@@ -41,11 +41,12 @@ public class BasePageBean implements Serializable{
    
     
     public void doLogin() {
-       
+            System.out.println("entramos ...");
             Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
 	    SecurityManager securityManager = factory.getInstance();
 	    SecurityUtils.setSecurityManager(securityManager);
-            Subject currentUser  = SecurityUtils.getSubject();                   
+            Subject currentUser  = SecurityUtils.getSubject();
+            System.out.println("entramos  2 .......");
             if ( !currentUser.isAuthenticated() ){
                 
                 try{
