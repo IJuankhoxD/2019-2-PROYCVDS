@@ -15,15 +15,15 @@ import java.util.Date;
 public class Prestamo {
     
     private Usuario usuario;
-    private ArrayList<Elemento> elemento;  
+    private ArrayList<Recurso> recurso;  
     private Date fechaInicio;
     private Date fechaFin;
     private Date fechaEntrega;
     
-    public Prestamo(Usuario usuario, ArrayList<Elemento> elemento, Date fechaInicio, Date fechaFin, Date fechaEntrega){
+    public Prestamo(Usuario usuario, ArrayList<Recurso> recurso, Date fechaInicio, Date fechaFin, Date fechaEntrega){
         super();
         this.usuario = usuario;
-        this.elemento= elemento;
+        this.recurso= recurso;
         this.fechaInicio= fechaInicio;
         this.fechaFin = fechaFin;
         this.fechaEntrega = fechaEntrega;
